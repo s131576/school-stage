@@ -5,4 +5,8 @@ export interface Post{
   content:string;
   image?: string;
   btag?:string;
+  introduction:string;
+  conclusion:string;
+  reflection:string;
+  obstacles:string;
 }

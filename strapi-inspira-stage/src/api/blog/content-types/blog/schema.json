@@ -36,6 +36,18 @@
     },
     "week": {
       "type": "string"
+    },
+    "introduction": {
+      "type": "richtext"
+    },
+    "conclusion": {
+      "type": "richtext"
+    },
+    "reflection": {
+      "type": "richtext"
+    },
+    "obstacles": {
+      "type": "richtext"
     }
   }
 }

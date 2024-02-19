@@ -13,11 +13,15 @@ export const loadPosts = async () => {
   const data = await response.json();
   const posts = data.data.map((value: any) => {
     return {
-      id: value.id,
+       id: value.id,
       title: value.attributes.title,
+      obstacles: value.attributes.obstacles,
+      introduction: value.attributes.introduction,
+      conclusion: value.attributes.conclusion,
+      reflection: value.attributes.reflection,
       week: value.attributes.week,
       content: value.attributes.content,
-      btag:value.attributes.btag.data.attributes.name,
+      btag: value.attributes.btag.data.attributes.name,
       image: value.attributes.image.data.attributes.url,
     };
   });

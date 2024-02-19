@@ -15,6 +15,10 @@ export const loadPosts = async () => {
     return {
       id: value.id,
       title: value.attributes.title,
+      obstacles: value.attributes.obstacles,
+      introduction: value.attributes.introduction,
+      conclusion: value.attributes.conclusion,
+      reflection: value.attributes.reflection,
       week: value.attributes.week,
       content: value.attributes.content,
       btag: value.attributes.btag.data.attributes.name,

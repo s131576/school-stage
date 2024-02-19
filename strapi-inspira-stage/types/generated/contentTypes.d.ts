@@ -379,6 +379,10 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     image: Attribute.Media;
     btag: Attribute.Relation<'api::blog.blog', 'oneToOne', 'api::btag.btag'>;
     week: Attribute.String;
+    introduction: Attribute.RichText;
+    conclusion: Attribute.RichText;
+    reflection: Attribute.RichText;
+    obstacles: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

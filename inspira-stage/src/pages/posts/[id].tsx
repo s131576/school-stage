@@ -41,6 +41,10 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
     {
       id: postDetail[0].id,
       title: postDetail[0].title,
+      reflection: postDetail[0].reflection,
+      introduction: postDetail[0].introduction,
+      conclusion: postDetail[0].conclusion,
+      obstacles: postDetail[0].obstacles,
       week: postDetail[0].week,
       content: postDetail[0].content,
       image: postDetail[0].image,
@@ -60,16 +64,49 @@ const PostDetail = ({ post }: PostDetailProps) => {
   return (
     <div className="max-w-5xl mx-auto my-8">
       <main className="mt-8 flex flex-col md:flex-row">
-        <div className="md:w-4/5 pr-0 md:pr-8">
+        <div className="md:w-full">
           <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-            <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+
+            {/* Title */}
             <div className="p-6">
               <h1 className="text-gray-800 text-4xl font-bold mb-4">{post.title}</h1>
+            </div>
+
+            {/* Introduction */}
+            <div className="p-6 italic text-lg text-gray-600"> {/* Add italic and adjust font size */}
+              <div dangerouslySetInnerHTML={{ __html: marked.parse(post.introduction) }} />
+            </div>
+
+            {/* Image */}
+            <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+
+            {/* Content */}
+            <div className="p-6">
               <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }} />
+            </div>
+
+            {/* Obstacles */}
+            <div className="p-6">
+            <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
+              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.obstacles) }} />
+            </div>
+
+            {/* Reflection */}
+            <div className="p-6">
+            <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
+              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.reflection) }} />
+            </div>
+
+             {/* Conclusion */}
+             <div className="p-6 text-xl"> {/* Adjusted font size for Conclusion */}
+             <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
+              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.conclusion) }} />
             </div>
           </div>
         </div>
-        <div className="md:w-1/5 mt-4 md:mt-0">
+
+        {/* Sidebar */}
+        <div className="md:w-1/5 mt-4 md:mt-0 md:ml-4">
           <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
             <p className="text-green-900 text-1xl font-bold mb-4">#{post.btag}</p>
           </div>
@@ -78,13 +115,13 @@ const PostDetail = ({ post }: PostDetailProps) => {
           </div>
         </div>
       </main>
+
       <div className="mt-6 text-center">
         <Link href="/posts">
           <p className="text-blue-500 hover:underline">Go Back</p>
         </Link>
       </div>
     </div>
-
   );
 };
 
