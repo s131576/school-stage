@@ -9,4 +9,5 @@ export interface Post{
   conclusion:string;
   reflection:string;
   obstacles:string;
+  imageUrls?: string[];
 }

@@ -48,6 +48,16 @@
     },
     "obstacles": {
       "type": "richtext"
+    },
+    "extraimages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

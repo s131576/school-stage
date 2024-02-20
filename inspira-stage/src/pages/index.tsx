@@ -11,7 +11,9 @@ export const loadPosts = async () => {
     },
   });
   const data = await response.json();
+
   const posts = data.data.map((value: any) => {
+
     return {
       id: value.id,
       title: value.attributes.title,
@@ -23,6 +25,7 @@ export const loadPosts = async () => {
       content: value.attributes.content,
       btag: value.attributes.btag.data.attributes.name,
       image: value.attributes.image.data.attributes.url,
+      imageUrls: value.attributes.extraimages.data.map((image: any) => image.attributes.formats.large.url),
     };
   });
 
@@ -45,26 +48,56 @@ interface postProps {
 const Home = ({ posts }: postProps) => {
   return (
     <div>
-      <div className="container mx-auto">
-        <div className="container mx-auto">
-          <div className="md:w-3/4 mx-auto text-center mb-8">
-            <h1 className="text-5xl font-bold text-blue-600 mb-6">🚀 Welcome to My Portfolio</h1>
-            <p className="text-lg text-gray-700 mb-4">
-              Hi, I'm <span className="font-semibold text-blue-600">Rachad Bouhjar</span>, a student at AP Hogeschool, pursuing a degree in Programming.
-            </p>
-            <p className="text-lg text-gray-700 mb-4">
-              Currently, I'm doing my internship at <span className="font-semibold text-blue-600">Inspira</span>, where I work with <span className="font-semibold text-blue-600">PHP and MySQL</span> technologies, crafting web solutions with Bootstrap.
-            </p>
-            <p className="text-lg text-gray-700 mb-4">
-              This website is a showcase of my journey during my internship. Explore my projects and experiences. Feel free to dive into the world of web development with me!
-            </p>
-            <p className="text-lg text-gray-700 mb-8">
-              Let's build something amazing together!
-            </p>
-          </div>
+
+      <div className="relative mt-5">
+        <div
+          className="absolute w-full h-full top-0 left-0 bg-cover bg-center mt-4"
+          style={{ backgroundImage: 'url(https://static.trustoo.nl/pros/53958/m_12b18cbaaa.jpg)' }}
+        ></div>
+        <div className="container relative z-10 text-center pt-2 sm:pt-4 lg:pt-5">
+          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-3">Project Inspira</h1>
         </div>
+        <div className="hidden lg:block" style={{ height: '360px', zIndex: -1 }}></div>
+        <div className="hidden md:block lg:hidden" style={{ height: '360px', zIndex: -1 }}></div>
+      </div>
 
+      <section className="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5 mt-5 flex flex-wrap">
+        <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
+          <div className="flex items-center mb-3">
+            <div className="bg-primary rounded-1 p-2 flex-shrink-0">
+              <div className="bg-green-500 p-2 rounded-full">
+                <svg className="text-white" width="28" height="28" viewBox="-5 0 25 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                </svg>
+              </div>
+            </div>
+            <h3 className="h5 ms-3 mb-0">Introduction</h3>
+          </div>
+          <p className="fs-sm">
+            Welcome to the official website of Schoolproject-Inspira. I am Bouhjar Rachad, a junior intern in the exciting field of web development at Inspira. My role as a web developer intern involves working enthusiastically with PHP to create robust web applications. We use the powerful Bootstrap framework for attractive and responsive user interfaces. My daily tasks also include managing data with MySQL as the database.
+          </p>
+        </div>
+        
+        <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
+          <div className="flex items-center mb-3">
+            <div className="bg-primary rounded-1 p-2 flex-shrink-0">
+              <div className="bg-green-500 p-2 rounded-full">
+                <svg className="text-white" width="28" height="28" viewBox="-5 0 25 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z" />
+                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
+                  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+                </svg>
+              </div>
+            </div>
+            <h3 className="h5 ms-3 mb-0">Purpose of this website</h3>
+          </div>
+          <p className="fs-sm">
+            This website serves not only as a digital portfolio but also as a dynamic report of my learning experiences and achievements during my internship. I cordially invite you to follow my development journey and discover how my passion for web development is reflected in each project and blog post. Here, I share my growth, challenges, and successes, with the aim of providing a transparent insight into my professional development and the creative journey I have undertaken.
+          </p>
+        </div>
+      </section>
 
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {posts.map((value: Post) => (
             <div key={value.id} className="rounded-md overflow-hidden bg-white shadow-md flex flex-col">
@@ -81,20 +114,26 @@ const Home = ({ posts }: postProps) => {
 
                 </div>
                 <div className="mt-auto text-center">
-                  <Link href={`/posts/${value.id}`}>
-                    <p className="text-blue-500 hover:underline">Read More...</p>
-                  </Link>
+                  <button type="button" className="text-green-700 hover:text-white border border-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:focus:ring-green-800"> <Link href={`/posts/${value.id}`}>
+                    Read More...
+                  </Link></button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="text-center mt-8">
-        <Link href="/posts" className="text-green-600 hover:underline font-bold text-xl">
-          See all posts
-        </Link>
-      </div>
+
+
+      <section className="container">
+        <div className="flex py-md-4 py-lg-2 my-2">
+          <div>
+            <button type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"> <Link href="/posts">
+              See all posts
+            </Link></button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

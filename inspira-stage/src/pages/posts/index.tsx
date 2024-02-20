@@ -11,9 +11,11 @@ export const loadPosts = async () => {
     },
   });
   const data = await response.json();
+
   const posts = data.data.map((value: any) => {
+  
     return {
-       id: value.id,
+      id: value.id,
       title: value.attributes.title,
       obstacles: value.attributes.obstacles,
       introduction: value.attributes.introduction,
@@ -23,9 +25,10 @@ export const loadPosts = async () => {
       content: value.attributes.content,
       btag: value.attributes.btag.data.attributes.name,
       image: value.attributes.image.data.attributes.url,
+      imageUrls: value.attributes.extraimages.data.map((image: any) => image.attributes.formats.large.url),
     };
   });
-
+  
   return posts;
 };
 
@@ -55,9 +58,10 @@ const Posts = ({ posts }: postProps) => {
     : posts;
 
   return (
-    <div className="flex">
+    <div className="flex mt-5">
       {/* Posts Section */}
-      <main className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+      <main className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-4">
+
         {filteredPosts.map((value: Post) => (
           <div
             key={value.id}

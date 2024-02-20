@@ -383,6 +383,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     conclusion: Attribute.RichText;
     reflection: Attribute.RichText;
     obstacles: Attribute.RichText;
+    extraimages: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

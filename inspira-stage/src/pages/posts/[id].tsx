@@ -48,7 +48,8 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
       week: postDetail[0].week,
       content: postDetail[0].content,
       image: postDetail[0].image,
-      btag: postDetail[0].btag
+      btag: postDetail[0].btag,
+      imageUrls: postDetail[0].imageUrls
     });
 
   return {
@@ -62,10 +63,10 @@ interface PostDetailProps {
 }
 const PostDetail = ({ post }: PostDetailProps) => {
   return (
-    <div className="max-w-5xl mx-auto my-8">
+    <div className="max-w-5xl mx-auto my-8 mt-5">
       <main className="mt-8 flex flex-col md:flex-row">
         <div className="md:w-full">
-          <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className="bg-gray rounded-lg overflow-hidden shadow-lg">
 
             {/* Title */}
             <div className="p-6">
@@ -87,19 +88,25 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
             {/* Obstacles */}
             <div className="p-6">
-            <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
+              <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
               <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.obstacles) }} />
             </div>
 
             {/* Reflection */}
             <div className="p-6">
-            <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
+              <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
               <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.reflection) }} />
             </div>
 
-             {/* Conclusion */}
-             <div className="p-6 text-xl"> {/* Adjusted font size for Conclusion */}
-             <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
+            <div className="p-6">
+              {post.imageUrls?.map((imageUrl: string, index: number) => (
+                <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className="w-full h-64 object-cover mb-4" />
+              ))}
+            </div>
+
+            {/* Conclusion */}
+            <div className="p-6 text-xl"> {/* Adjusted font size for Conclusion */}
+              <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
               <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.conclusion) }} />
             </div>
           </div>
