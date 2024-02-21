@@ -6,11 +6,6 @@ import { useState } from 'react';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
 
   return (
     <div className="flex flex-col min-h-screen justify-between bg-gray-100">
@@ -22,34 +17,21 @@ const App = ({ Component, pageProps }: AppProps) => {
           </Link>
 
           <nav id='navbarNav' className="flex items-center space-x-4">
-            <Link href="/" className="text-gray-800 hover:text-green-500 cursor-pointer">Home</Link>
-            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">About Me</Link>
+            <Link href="/" className="text-gray-800 hover:text-green-500 cursor-pointer">Home</Link> 
             <Link href="/posts" className="text-gray-800 hover:text-green-500  cursor-pointer">Blog</Link>
+            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">About Me</Link>
+           
           </nav>
         </div>
       </header>
 
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 p-4">
-          <Link href="/" className="block text-white text-xl mb-2">
-            Home
-          </Link>
-          <Link href="/posts" className="block text-white text-xl mb-2">
-            Blog
-          </Link>
-          <Link href="/aboutme" className="block text-white text-xl mb-2">
-            About me
-          </Link>
-        </div>
-      )}
-
-      <main className="container mx-auto p-4 flex-grow">
+      <main className="container mx-auto p-4 flex-grow mt-16">
         <Component {...pageProps} key={router.route} />
       </main>
 
       <footer className="bg-secondary py-5 top-0 w-full bg-white shadow-lg">
         <div className="container mx-auto pt-sm-2 pt-md-3 pt-lg-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-md-5 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-md-5 mb-4">
             <div className="col flex justify-center items-center">
               <a href="https://www.ap.be/" className="navbar-brand d-inline-flex">
                 <img src="https://www.ap.be/themes/custom/ap_hogeschool/src/images/logo-ap.svg" width="200" alt="" />

@@ -39,17 +39,17 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
 
   const post = (
     {
-      id: postDetail[0].id,
-      title: postDetail[0].title,
-      reflection: postDetail[0].reflection,
-      introduction: postDetail[0].introduction,
-      conclusion: postDetail[0].conclusion,
-      obstacles: postDetail[0].obstacles,
-      week: postDetail[0].week,
-      content: postDetail[0].content,
-      image: postDetail[0].image,
-      btag: postDetail[0].btag,
-      imageUrls: postDetail[0].imageUrls
+      id: postDetail[0].id || "",
+      title: postDetail[0].title || "",
+      reflection: postDetail[0].reflection || "",
+      introduction: postDetail[0].introduction || "",
+      conclusion: postDetail[0].conclusion || "",
+      obstacles: postDetail[0].obstacles || "",
+      week: postDetail[0].week || "",
+      content: postDetail[0].content || "",
+      image: postDetail[0].image || "",
+      btag: postDetail[0].btag || "",
+      imageUrls: postDetail[0].imageUrls || []
     });
 
   return {
@@ -74,12 +74,16 @@ const PostDetail = ({ post }: PostDetailProps) => {
             </div>
 
             {/* Introduction */}
-            <div className="p-6 italic text-lg text-gray-600"> {/* Add italic and adjust font size */}
-              <div dangerouslySetInnerHTML={{ __html: marked.parse(post.introduction) }} />
-            </div>
+            {post.introduction && (
+              <div className="p-6 italic text-lg text-gray-600">
+                <div dangerouslySetInnerHTML={{ __html: marked.parse(post.introduction) }} />
+              </div>
+            )}
 
             {/* Image */}
-            <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+            {post.image && (
+              <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+            )}
 
             {/* Content */}
             <div className="p-6">
@@ -87,16 +91,20 @@ const PostDetail = ({ post }: PostDetailProps) => {
             </div>
 
             {/* Obstacles */}
-            <div className="p-6">
-              <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
-              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.obstacles) }} />
-            </div>
+            {post.obstacles && (
+              <div className="p-6">
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
+                <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.obstacles) }} />
+              </div>
+            )}
 
             {/* Reflection */}
-            <div className="p-6">
-              <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
-              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.reflection) }} />
-            </div>
+            {post.reflection && (
+              <div className="p-6">
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
+                <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.reflection) }} />
+              </div>
+            )}
 
             <div className="p-6">
               {post.imageUrls?.map((imageUrl: string, index: number) => (
@@ -105,27 +113,33 @@ const PostDetail = ({ post }: PostDetailProps) => {
             </div>
 
             {/* Conclusion */}
-            <div className="p-6 text-xl"> {/* Adjusted font size for Conclusion */}
-              <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
-              <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.conclusion) }} />
-            </div>
+            {post.conclusion && (
+              <div className="p-6 text-xl">
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
+                <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.conclusion) }} />
+              </div>
+            )}
           </div>
         </div>
 
         {/* Sidebar */}
         <div className="md:w-1/5 mt-4 md:mt-0 md:ml-4">
           <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
-            <p className="text-green-900 text-1xl font-bold mb-4">#{post.btag}</p>
+            {post.btag && (
+              <p className="text-green-900 text-1xl font-bold mb-4">#{post.btag}</p>
+            )}
           </div>
           <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
-            <p className="text-green-900 text-1xl font-bold mb-4">=={post.week}==</p>
+            {post.week && (
+              <p className="text-green-900 text-1xl font-bold mb-4">=={post.week}==</p>
+            )}
           </div>
         </div>
       </main>
 
       <div className="mt-6 text-center">
-        <Link href="/posts">
-          <p className="text-blue-500 hover:underline">Go Back</p>
+        <Link href={`/posts`}>
+          <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Go back</button>
         </Link>
       </div>
     </div>

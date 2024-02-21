@@ -5,10 +5,50 @@ import { SkillData } from '@/constants';
 import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 
+import { TypeAnimation } from 'react-type-animation';
+
+
 export default function AboutMe() {
   return (
     <>
-      <section className="container py-5 mt-5">
+      <section className='container mx-auto px-6 lg:px-12 py-8 lg:py-4'>
+        <div className='grid grid-cols-1 lg:grid-cols-12'>
+          <div className='col-span-12 lg:col-span-7 place-self-center'>
+            <h1 className='text-black mb-4 text-4xl lg:text-6xl font-extrabold'>
+              <span>Hello, I'm {""}</span>
+              <TypeAnimation
+                sequence={[
+                  'Rachad Bouhjar',
+                  2000,
+                  'Junior Web Developer',
+                  2000,
+                ]}
+                wrapper="span"
+                speed={10}
+                style={{ color: "#3a7763" }}
+                repeat={Infinity}
+              />
+            </h1>
+            <p className='text-[#ADB7BE] text-lg mb-6 lg:text-xl'>
+              Welcome to my humble portfolio! As a junior web developer, I'm excited to share my initial steps in the world of creative digital solutions. Take a look around and explore my growing collection of designs. Enjoy the journey and feel free to browse! 🚀
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-5 place-self-center mt-4 lg:mt-0">
+            <div className='rounded-full overflow-hidden bg-[#3a7763] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] mx-auto relative'>
+              <Image
+                src={"/welcome.jpg"}
+                alt='user image'
+                layout="fill"
+                objectFit="cover"
+                className='object-center object-cover'
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="container py-5 mt-5 text-lg lg:text-xl">
         <h2 className="h1 text-center">Projecten</h2>
         {/* Stats */}
         <section className="container pb-2 pb-sm-3 pb-md-4 pb-lg-5 mb-xl-3 mb-xxl-5">

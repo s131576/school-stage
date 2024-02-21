@@ -13,22 +13,22 @@ export const loadPosts = async () => {
   const data = await response.json();
 
   const posts = data.data.map((value: any) => {
-  
+
     return {
       id: value.id,
       title: value.attributes.title,
-      obstacles: value.attributes.obstacles,
-      introduction: value.attributes.introduction,
-      conclusion: value.attributes.conclusion,
-      reflection: value.attributes.reflection,
-      week: value.attributes.week,
-      content: value.attributes.content,
-      btag: value.attributes.btag.data.attributes.name,
-      image: value.attributes.image.data.attributes.url,
-      imageUrls: value.attributes.extraimages.data.map((image: any) => image.attributes.formats.large.url),
+      obstacles: value.attributes.obstacles || "",
+      introduction: value.attributes.introduction || "", 
+      conclusion: value.attributes.conclusion || "",
+      reflection: value.attributes.reflection || "",
+      week: value.attributes.week || "",
+      content: value.attributes.content || "", 
+      btag: value.attributes.btag?.data?.attributes?.name || "", 
+      image: value.attributes.image?.data?.attributes?.url || "",
+      imageUrls: value.attributes.extraimages?.data?.map((image: any) => image.attributes.url) || [],
     };
   });
-  
+
   return posts;
 };
 
@@ -44,24 +44,42 @@ export const getStaticProps = async () => {
 };
 
 interface postProps {
-  posts: Post[];  
-}
-const Posts = ({ posts }: postProps) => {
+  posts: Post[];
+}const Posts = ({ posts }: postProps) => {
   const [selectedBtag, setSelectedBtag] = useState<string | null>(null);
 
-  // Extract all unique btags from posts
   const btags = Array.from(new Set(posts.flatMap((post) => post.btag || "Uncategorized")));
-
-  // Filter posts based on the selected btag
-  const filteredPosts = selectedBtag
-    ? posts.filter((post) => post.btag === selectedBtag)
-    : posts;
+  const filteredPosts = selectedBtag ? posts.filter((post) => post.btag === selectedBtag) : posts;
 
   return (
-    <div className="flex mt-5">
-      {/* Posts Section */}
-      <main className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-4">
+    <div className="flex flex-col mt-5 md:flex-row md:space-x-4">
+      {/* Filter Section */}
+      <div className="w-full md:w-1/4 md:pr-4 mt-4 md:order-2">
+        <ul>
+        <h2 className="text-lg font-semibold mb-2">Categories</h2>
+          <li key="all" onClick={() => setSelectedBtag(null)} className={`cursor-pointer mt-2`}>
+            <button
+              type="button"
+              className={`text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800`}
+            >
+              All
+            </button>
+          </li>
+          {btags.map((btag) => (
+            <li key={btag} onClick={() => setSelectedBtag(btag)} className={`cursor-pointer mt-2`}>
+              <button
+                type="button"
+                className={`text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800`}
+              >
+                #{btag}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
+      {/* Posts Section */}
+      <main className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-4 mt-4 md:order-1">
         {filteredPosts.map((value: Post) => (
           <div
             key={value.id}
@@ -78,14 +96,12 @@ const Posts = ({ posts }: postProps) => {
               <div className="p-4 flex flex-col justify-between h-full">
                 <div>
                   <h2 className="text-black text-xl font-semibold">{value.title}</h2>
-                  <h2 className="text-black text-xl font-semibold">{value.btag || "Uncategorized"}</h2>
+                  <h2 className="text-black text-sm font-semibold">#{value.btag || "Uncategorized"}</h2>
                 </div>
                 <div className="flex-grow"></div>
-                <div className="text-center">
+                <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>
-                    <p className="text-blue-500 cursor-pointer transition-opacity duration-300 ease-in-out hover:opacity-80">
-                      Read More ...
-                    </p>
+                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Read more ...</button>
                   </Link>
                 </div>
               </div>
@@ -93,22 +109,6 @@ const Posts = ({ posts }: postProps) => {
           </div>
         ))}
       </main>
-      {/* Filter Section */}
-      <div className="w-1/4 pr-4">
-        <h2 className="text-lg font-semibold mb-2">Categories</h2>
-        <ul>
-          <li key="all" onClick={() => setSelectedBtag(null)} className={`cursor-pointer ${selectedBtag === null ? 'text-blue-500' : ''}`}>All</li>
-          {btags.map((btag) => (
-            <li
-              key={btag}
-              onClick={() => setSelectedBtag(btag)}
-              className={`cursor-pointer ${selectedBtag === btag ? 'text-blue-500' : ''}`}
-            >
-              #{btag}
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };

@@ -13,19 +13,18 @@ export const loadPosts = async () => {
   const data = await response.json();
 
   const posts = data.data.map((value: any) => {
-
     return {
       id: value.id,
       title: value.attributes.title,
-      obstacles: value.attributes.obstacles,
-      introduction: value.attributes.introduction,
-      conclusion: value.attributes.conclusion,
-      reflection: value.attributes.reflection,
-      week: value.attributes.week,
-      content: value.attributes.content,
-      btag: value.attributes.btag.data.attributes.name,
-      image: value.attributes.image.data.attributes.url,
-      imageUrls: value.attributes.extraimages.data.map((image: any) => image.attributes.formats.large.url),
+      obstacles: value.attributes.obstacles || "",
+      introduction: value.attributes.introduction || "", 
+      conclusion: value.attributes.conclusion || "",
+      reflection: value.attributes.reflection || "",
+      week: value.attributes.week || "",
+      content: value.attributes.content || "", 
+      btag: value.attributes.btag?.data?.attributes?.name || "", 
+      image: value.attributes.image?.data?.attributes?.url || "",
+      imageUrls: value.attributes.extraimages?.data?.map((image: any) => image.attributes.url) || [], 
     };
   });
 
@@ -54,7 +53,7 @@ const Home = ({ posts }: postProps) => {
           className="absolute w-full h-full top-0 left-0 bg-cover bg-center mt-4"
           style={{ backgroundImage: 'url(https://static.trustoo.nl/pros/53958/m_12b18cbaaa.jpg)' }}
         ></div>
-        <div className="container relative z-10 text-center pt-2 sm:pt-4 lg:pt-5">
+        <div className="container relative z-10 text-center pt-2 sm:pt-3 lg:pt-5">
           <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-3">Project Inspira</h1>
         </div>
         <div className="hidden lg:block" style={{ height: '360px', zIndex: -1 }}></div>
@@ -77,7 +76,7 @@ const Home = ({ posts }: postProps) => {
             Welcome to the official website of Schoolproject-Inspira. I am Bouhjar Rachad, a junior intern in the exciting field of web development at Inspira. My role as a web developer intern involves working enthusiastically with PHP to create robust web applications. We use the powerful Bootstrap framework for attractive and responsive user interfaces. My daily tasks also include managing data with MySQL as the database.
           </p>
         </div>
-        
+
         <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
           <div className="flex items-center mb-3">
             <div className="bg-primary rounded-1 p-2 flex-shrink-0">
@@ -114,9 +113,9 @@ const Home = ({ posts }: postProps) => {
 
                 </div>
                 <div className="mt-auto text-center">
-                  <button type="button" className="text-green-700 hover:text-white border border-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:focus:ring-green-800"> <Link href={`/posts/${value.id}`}>
-                    Read More...
-                  </Link></button>
+                  <Link href={`/posts/${value.id}`}>
+                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Read more ...</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -124,14 +123,15 @@ const Home = ({ posts }: postProps) => {
         </div>
       </div>
 
-
       <section className="container">
         <div className="flex py-md-4 py-lg-2 my-2">
-          <div>
-            <button type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"> <Link href="/posts">
-              See all posts
-            </Link></button>
-          </div>
+          <Link href="/posts" className="text-white">
+            <div>
+              <button type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                See all posts
+              </button>
+            </div>
+          </Link>
         </div>
       </section>
     </div>
