@@ -11,7 +11,7 @@ import { TypeAnimation } from 'react-type-animation';
 export default function AboutMe() {
   return (
     <>
-      <section className='container mx-auto px-6 lg:px-12 py-8 lg:py-4'>
+      <section className='container mx-auto px-6 lg:px-12'>
         <div className='grid grid-cols-1 lg:grid-cols-12'>
           <div className='col-span-12 lg:col-span-7 place-self-center'>
             <h1 className='text-black mb-4 text-4xl lg:text-6xl font-extrabold'>
@@ -24,7 +24,7 @@ export default function AboutMe() {
                   2000,
                 ]}
                 wrapper="span"
-                speed={10}
+                speed={13}
                 style={{ color: "#3a7763" }}
                 repeat={Infinity}
               />
@@ -86,7 +86,6 @@ export default function AboutMe() {
           </div>
         </section>
       </section>
-
       <section className="container pb-5 mb-lg-3 mb-xl-4 mb-xxl-5 mt-5 flex flex-wrap">
         {/* Item 1 */}
         <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4 flex">
@@ -107,6 +106,7 @@ export default function AboutMe() {
           </Link>
         </div>
 
+        {/* Item 2 */}
         <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4 flex">
           <Link href="https://bouhjar-rachad-website.netlify.app/">
             <div className="card card-hover-primary border-0 h-100 text-decoration-none flex flex-col">
@@ -126,27 +126,78 @@ export default function AboutMe() {
         </div>
       </section>
 
+      {/*--------------------------------------------------------------------------------------- */}
 
+      <section className="container pb-1  mb-xl-4 mb-xxl-5 mt-5 flex flex-wrap">
+        {/* Left Section - Personalia */}
+        <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4 flex">
+        <div className="card card-hover-primary border-0 h-100 text-decoration-none flex flex-col">
+            <div className="card-body pb-1 flex-grow w-100">
+              <h3 className="card-title mt-0">Personalia</h3>
+              <ul>
+              <li>Naam: Rachad Bouhjar</li>
+              <li>Plaats: Antwerpen</li>
+              <li>Geboortedatum: 5 april 1998</li>
+              <li>Geboorteplaats: Wilrijk</li>
+              <li>Nationaliteit: Belgisch</li>
+              <li>Burgerlijke staat: Ongehuwd</li>
+              <li>Rijbewijs: B</li>
+              </ul>
 
-
-
-      <div className='min-h-screen bg-gradient-to-b from-transparent to-bg-start flex flex-col items-center justify-center'>
-        <div className='mx-auto p-8 text-center'>
-          <h1 className='text-4xl font-bold text-white mb-4'>Rachad Bouhjar</h1>
-          <p className='text-lg text-gray-300 mb-8'>Passionate Programmer</p>
-
-          <div className='text-white'>
-            <section className='mb-8'>
-              <h2 className='text-2xl font-bold mb-2'>Education:</h2>
-              <p>A2 diploma TSO Elektriciteit/Elektronica (2015-2016)</p>
-              <p>VCA diploma (2020-2030)</p>
-            </section>
+              <h3 className="h4 card-title mt-4">Opleiding</h3>
+              <ul>
+                <li>2021-heden: Graduaat Programmeren, Ap Hogeschool, Antwerpen</li>
+                <li>2012-2016: Elektriciteit/Elektronica, Stedelijk Lyceum Meir, Antwerpen</li>
+                <li>2011-2012: Handel, Sint-Lievenscollege, Antwerpen</li>
+                <li>2010-2011: Moderne Wetenschappen, Sint-Lievenscollege, Antwerpen</li>
+              </ul>
+            </div>
           </div>
         </div>
 
+        {/* Right Section - Opleiding and Certificaten */}
+        <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4 flex">
+        <div className="card card-hover-primary border-0 h-100 text-decoration-none flex flex-col">
+            <div className="card-body pb-5 flex-grow w-100">
+
+              <h3 className="h4 card-title mt-0">Certificaten</h3>
+              <ul>
+                <li>Rolbrug</li>
+                <li>Theorie heftruck + ervaring</li>
+                <li>2015-2016: A2 diploma TSO Elektriciteit/Elektronica Stedelijk Lyceum Meir, Antwerpen</li>
+                <li>2020-2030: VCA diploma</li>
+              </ul>
+
+              <h3 className="h4 card-title mt-4">Werkervaring</h3>
+              <ul>
+                <li>Cofely-axima Montage/Elektricien 06/2017-09/2017</li>
+                <li>Aleris: Proces operator 06/2018-12/2018</li>
+                <li>Campine: Proces operator 01/2019-04/2019</li>
+                <li>Audi: Technisch operator 09/2019-11/2019</li>
+                <li>Still (tijdelijk): Magazijnier 09/2020-12/2020</li>
+                <li>Henco: Operator 02/2021-06/2021</li>
+                <li>Camin Cargo Magazijn/Stalen/SABA 01/2023-03/2023</li>
+              </ul>
+
+              <h3 className="h4 card-title mt-4">Taalvaardigheden</h3>
+              <ul>
+                <li>Nederlands: moedertaal</li>
+                <li>Frans: basis kennis</li>
+                <li>Engels: zeer goed</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/*--------------------------------------------------------------------------------------- */}
+
+
+      {/* <div className='min-h-screen bg-gradient-to-b from-transparent to-bg-start flex flex-col items-center justify-center mt-0'>
         <div className='flex flex-col gap-20 max-w-[80%] text-center items-center'>
           <div className='flex flex-col items-center gap-4'>
-            <h1 className='font-semibold text-white text-5xl'>
+            <h1 className='font-semibold text-primary text-5xl'>
               Skills{' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500'>
                 {' '}
@@ -203,7 +254,7 @@ export default function AboutMe() {
             </Swiper>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

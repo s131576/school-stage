@@ -18,12 +18,12 @@ export const loadPosts = async () => {
       id: value.id,
       title: value.attributes.title,
       obstacles: value.attributes.obstacles || "",
-      introduction: value.attributes.introduction || "", 
+      introduction: value.attributes.introduction || "",
       conclusion: value.attributes.conclusion || "",
       reflection: value.attributes.reflection || "",
       week: value.attributes.week || "",
-      content: value.attributes.content || "", 
-      btag: value.attributes.btag?.data?.attributes?.name || "", 
+      content: value.attributes.content || "",
+      btag: value.attributes.btag?.data?.attributes?.name || "",
       image: value.attributes.image?.data?.attributes?.url || "",
       imageUrls: value.attributes.extraimages?.data?.map((image: any) => image.attributes.url) || [],
     };
@@ -52,11 +52,11 @@ interface postProps {
   const filteredPosts = selectedBtag ? posts.filter((post) => post.btag === selectedBtag) : posts;
 
   return (
-    <div className="flex flex-col mt-5 md:flex-row md:space-x-4">
+    <div className="flex flex-col md:flex-row md:space-x-4">
       {/* Filter Section */}
-      <div className="w-full md:w-1/4 md:pr-4 mt-4 md:order-2">
+      <div className="w-full md:w-1/4 md:pr-4  md:order-2">
         <ul>
-        <h2 className="text-lg font-semibold mb-2">Categories</h2>
+          <h2 className="text-lg font-semibold mb-2 mt-1">Categories</h2>
           <li key="all" onClick={() => setSelectedBtag(null)} className={`cursor-pointer mt-2`}>
             <button
               type="button"
@@ -79,7 +79,8 @@ interface postProps {
       </div>
 
       {/* Posts Section */}
-      <main className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-4 mt-4 md:order-1">
+      
+      <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-4 md:order-1">
         {filteredPosts.map((value: Post) => (
           <div
             key={value.id}
@@ -94,10 +95,12 @@ interface postProps {
                 />
               </div>
               <div className="p-4 flex flex-col justify-between h-full">
-                <div>
+                <div className="items-center">
+                  <p className="text-primary text-sm font-semibold ml-2">#{value.btag || "Uncategorized"}</p>
                   <h2 className="text-black text-xl font-semibold">{value.title}</h2>
-                  <h2 className="text-black text-sm font-semibold">#{value.btag || "Uncategorized"}</h2>
+                  
                 </div>
+
                 <div className="flex-grow"></div>
                 <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>
@@ -108,7 +111,7 @@ interface postProps {
             </div>
           </div>
         ))}
-      </main>
+      </div>
     </div>
   );
 };

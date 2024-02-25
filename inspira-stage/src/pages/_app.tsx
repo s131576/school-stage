@@ -1,79 +1,125 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import '@/styles/globals.css';
+import type { AppProps } from 'next/app';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // State to track if the user has scrolled down
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the user has scrolled down more than 100 pixels
+      setHasScrolled(window.scrollY > 100);
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Function to scroll to the top when the button is clicked
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
-    <div className="flex flex-col min-h-screen justify-between bg-gray-100">
-
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-lg p-4"  style={{zIndex: 3 }}>
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      {/* Header */}
+      <header className="bg-white shadow-lg p-4 z-10">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/">
-            <img src="https://www.ap.be/themes/custom/ap_hogeschool/src/images/logo-ap.svg" width="200" alt="Logo" />
+            <img src="https://www.ap.be/themes/custom/ap_hogeschool/src/images/logo-ap.svg" width="150" alt="Logo" />
           </Link>
-
-          <nav id='navbarNav' className="flex items-center space-x-4">
-            <Link href="/" className="text-gray-800 hover:text-green-500 cursor-pointer">Home</Link> 
-            <Link href="/posts" className="text-gray-800 hover:text-green-500  cursor-pointer">Blog</Link>
-            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">About Me</Link>
-           
+          {/* Hamburger Icon */}
+          <div className="md:hidden">
+            <button onClick={toggleMenu} className="text-gray-800 hover:text-green-500 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
+          {/* Normal Navigation for Medium Screens and Larger */}
+          <nav className="hidden md:flex items-center space-x-4">
+            <Link href="/" className="text-gray-800 hover:text-green-500 cursor-pointer">Home</Link>
+            <Link href="/posts" className="text-gray-800 hover:text-green-500 cursor-pointer">Blog</Link>
+            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">About me</Link>
           </nav>
         </div>
       </header>
 
-      <main className="container mx-auto p-4 flex-grow mt-16">
+      {/* Responsive Menu for Small Screens */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-gray-800 p-4 z-20" style={{ animation: 'slide-down 0.3s ease-in-out' }}>
+          <Link href="/" className="block text-white text-m" onClick={toggleMenu}>
+            Home
+          </Link>
+          <Link href="/posts" className="block text-white text-m" onClick={toggleMenu}>
+            Blog
+          </Link>
+          <Link href="/aboutme" className="block text-white text-m" onClick={toggleMenu}>
+            About me
+          </Link>
+        </div>
+      )}
+
+
+      {/* Main Content */}
+      <main className="container mx-auto flex-grow mt-4">
         <Component {...pageProps} key={router.route} />
       </main>
 
-      <footer className="bg-secondary py-5 top-0 w-full bg-white shadow-lg">
-        <div className="container mx-auto pt-sm-2 pt-md-3 pt-lg-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-md-5 mb-4">
-            <div className="col flex justify-center items-center">
-              <a href="https://www.ap.be/" className="navbar-brand d-inline-flex">
-                <img src="https://www.ap.be/themes/custom/ap_hogeschool/src/images/logo-ap.svg" width="200" alt="" />
-              </a>
-            </div>
-            <div className="col text-center">
-              <a href="index.html" className="navbar-brand d-inline-flex align-items-center mt-0 mb-lg-4 mb-3 text-nav">
-                Inspira
-              </a>
-              <div className="mt-3 flex justify-center space-x-3">
-                <a href="https://www.facebook.com/inspirabvba/" className="btn btn-secondary btn-icon btn-sm btn-facebook rounded-circle" aria-label="Facebook">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
-                  </svg>
-                </a>
-                <a href="https://www.linkedin.com/company/inspira-bvba/" className="btn btn-secondary btn-icon btn-sm btn-linkedin rounded-circle" aria-label="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                  </svg>
-                </a>
-                <a href="https://twitter.com/Inspira_bvba/" className="btn btn-secondary btn-icon btn-sm btn-x rounded-circle" aria-label="X">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-twitter-x" viewBox="0 0 16 16">
-                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div className="col flex justify-center">
-              <ul className="nav flex-column mb-0">
-                <li className="nav-item mb-2">
-                  <a href="tel:+15262200444" className="nav-link p-0">Adres: Vrijheid 63 bus 1 2370 Arendonk</a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="tel:+15262200444" className="nav-link p-0">Tel: +32 14 89 65 89</a>
-                </li>
-                <li className="nav-item mb-2">
-                  <a href="mailto:info@inspira.be" className="nav-link p-0">E-mail: info@inspira.be</a>
-                </li>
-              </ul>
-            </div>
+      {/* Footer */}
+      <footer className="bg-secondary py-5 w-full bg-white shadow-lg">
+        {/* <div className="container mx-auto text-center md:text-left fs-sm text-body-secondary">
+         
+
+          <div className="mb-2 md:mb-0 md:mr-2 inline-block">
+            <p>Section 1 Content</p>
           </div>
-          <div className="text-center fs-sm text-body-secondary">&copy; All rights reserved. Made by <span>Rachad Bouhjar</span></div>
+
+         
+          <div className="mb-2 md:mb-0 md:mx-2 inline-block">
+            <p>Section 2 Content</p>
+          </div>
+
+          <div className="inline-block">
+            <p>Section 3 Content</p>
+          </div>
+        </div> */}
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full transition-opacity duration-300 ${hasScrolled ? 'opacity-100' : 'opacity-0'
+            }`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-arrow-up-circle"
+            viewBox="0 0 16 16"
+          >
+            <path fillRule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+          </svg>
+        </button>
+        <div className="container mx-auto pt-md-3 pt-lg-4 text-center fs-sm text-body-secondary">
+          &copy; All rights reserved. Made by <span>Rachad Bouhjar</span>
         </div>
       </footer>
     </div>

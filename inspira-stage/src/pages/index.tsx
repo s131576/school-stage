@@ -17,14 +17,14 @@ export const loadPosts = async () => {
       id: value.id,
       title: value.attributes.title,
       obstacles: value.attributes.obstacles || "",
-      introduction: value.attributes.introduction || "", 
+      introduction: value.attributes.introduction || "",
       conclusion: value.attributes.conclusion || "",
       reflection: value.attributes.reflection || "",
       week: value.attributes.week || "",
-      content: value.attributes.content || "", 
-      btag: value.attributes.btag?.data?.attributes?.name || "", 
+      content: value.attributes.content || "",
+      btag: value.attributes.btag?.data?.attributes?.name || "",
       image: value.attributes.image?.data?.attributes?.url || "",
-      imageUrls: value.attributes.extraimages?.data?.map((image: any) => image.attributes.url) || [], 
+      imageUrls: value.attributes.extraimages?.data?.map((image: any) => image.attributes.url) || [],
     };
   });
 
@@ -48,13 +48,13 @@ const Home = ({ posts }: postProps) => {
   return (
     <div>
 
-      <div className="relative mt-5">
+      <div className="relative">
         <div
-          className="absolute w-full h-full top-0 left-0 bg-cover bg-center mt-4"
+          className="absolute w-full h-full top-0 left-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://static.trustoo.nl/pros/53958/m_12b18cbaaa.jpg)' }}
         ></div>
-        <div className="container relative z-10 text-center pt-2 sm:pt-3 lg:pt-5">
-          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-3">Project Inspira</h1>
+        <div className="container relative z-10 text-center  sm:pt-1">
+          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-5" style={{zIndex: -1 }}>Project Inspira</h1>
         </div>
         <div className="hidden lg:block" style={{ height: '360px', zIndex: -1 }}></div>
         <div className="hidden md:block lg:hidden" style={{ height: '360px', zIndex: -1 }}></div>
@@ -64,7 +64,7 @@ const Home = ({ posts }: postProps) => {
         <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
           <div className="flex items-center mb-3">
             <div className="bg-primary rounded-1 p-2 flex-shrink-0">
-              <div className="bg-green-500 p-2 rounded-full">
+              <div>
                 <svg className="text-white" width="28" height="28" viewBox="-5 0 25 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                 </svg>
@@ -80,7 +80,7 @@ const Home = ({ posts }: postProps) => {
         <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-4">
           <div className="flex items-center mb-3">
             <div className="bg-primary rounded-1 p-2 flex-shrink-0">
-              <div className="bg-green-500 p-2 rounded-full">
+              <div>
                 <svg className="text-white" width="28" height="28" viewBox="-5 0 25 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z" />
                   <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
