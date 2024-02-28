@@ -1,5 +1,6 @@
 export interface Post{
   id:number;
+  publishedAt?: string;
   title:string;
   week?:string;
   content:string;

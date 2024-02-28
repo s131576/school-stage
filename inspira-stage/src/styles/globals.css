@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  /* overflow-y: scroll; */
+  overflow-y: scroll; 
 }
 .card:hover, .card:active, .card.active {
   background-color: #3a7763; /* Set your desired background color */

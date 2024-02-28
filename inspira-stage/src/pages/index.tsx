@@ -16,6 +16,7 @@ export const loadPosts = async () => {
     return {
       id: value.id,
       title: value.attributes.title,
+      publishedAt: value.attributes.publishedAt,
       obstacles: value.attributes.obstacles || "",
       introduction: value.attributes.introduction || "",
       conclusion: value.attributes.conclusion || "",
@@ -51,10 +52,10 @@ const Home = ({ posts }: postProps) => {
       <div className="relative">
         <div
           className="absolute w-full h-full top-0 left-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://static.trustoo.nl/pros/53958/m_12b18cbaaa.jpg)' }}
+          style={{ backgroundImage: 'url(/Inspira-63.jpg)' }}
         ></div>
         <div className="container relative z-10 text-center  sm:pt-1">
-          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-5" style={{zIndex: -1 }}>Project Inspira</h1>
+          <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold pt-5 mt-5" style={{ zIndex: -1 }}>Project Inspira</h1>
         </div>
         <div className="hidden lg:block" style={{ height: '360px', zIndex: -1 }}></div>
         <div className="hidden md:block lg:hidden" style={{ height: '360px', zIndex: -1 }}></div>
@@ -107,10 +108,11 @@ const Home = ({ posts }: postProps) => {
               />
               <div className="p-6 flex flex-col flex-grow">
                 <div>
-                  <div className="text-center ">
-                  </div>
+                  <span className="text-gray-400  font-small">
+                    Published on:{value.publishedAt?.substring(0, 10)}
+                  </span>
+                  <p className="text-primary text-sm font-semibold ml-2">#{value.btag}</p>
                   <h2 className="text-black text-xl font-bold mb-2">{value.title}</h2>
-
                 </div>
                 <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>

@@ -17,6 +17,7 @@ export const loadPosts = async () => {
     return {
       id: value.id,
       title: value.attributes.title,
+      publishedAt: value.attributes.publishedAt,
       obstacles: value.attributes.obstacles || "",
       introduction: value.attributes.introduction || "",
       conclusion: value.attributes.conclusion || "",
@@ -79,7 +80,7 @@ interface postProps {
       </div>
 
       {/* Posts Section */}
-      
+
       <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-4 md:order-1">
         {filteredPosts.map((value: Post) => (
           <div
@@ -96,9 +97,12 @@ interface postProps {
               </div>
               <div className="p-4 flex flex-col justify-between h-full">
                 <div className="items-center">
+                  <span className="text-gray-400  font-small">
+                    Published on:{value.publishedAt?.substring(0, 10)}
+                  </span>
                   <p className="text-primary text-sm font-semibold ml-2">#{value.btag || "Uncategorized"}</p>
                   <h2 className="text-black text-xl font-semibold">{value.title}</h2>
-                  
+
                 </div>
 
                 <div className="flex-grow"></div>

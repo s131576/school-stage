@@ -82,7 +82,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
             {/* Image */}
             {post.image && (
-              <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+              <img src={post.image} alt={post.title} className="w-full h-100 object-cover" />
             )}
 
             {/* Content */}
@@ -108,7 +108,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
             <div className="p-6">
               {post.imageUrls?.map((imageUrl: string, index: number) => (
-                <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className="w-full h-64 object-cover mb-4" />
+                <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className="w-full h-100 object-cover mb-4" />
               ))}
             </div>
 
@@ -124,14 +124,14 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
         {/* Sidebar */}
         <div className="md:w-1/5 mt-4 md:mt-0 md:ml-4">
-          <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
-            {post.btag && (
-              <p className="text-green-900 text-1xl font-bold mb-4">#{post.btag}</p>
+        <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
+            {post.week && (
+              <p className="text-green-900 text-1xl font-bold mb-4">=={post.week}==</p>
             )}
           </div>
           <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
-            {post.week && (
-              <p className="text-green-900 text-1xl font-bold mb-4">=={post.week}==</p>
+            {post.btag && (
+              <p className="text-green-900 text-1xl font-bold mb-4">#{post.btag}</p>
             )}
           </div>
         </div>
