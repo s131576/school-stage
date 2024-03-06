@@ -5,8 +5,16 @@
 body {
   overflow-y: scroll; 
 }
+
+.inspira-accord{
+  padding-left: 100px;
+  
+}
 .card:hover, .card:active, .card.active {
   background-color: #3a7763; /* Set your desired background color */
+}
+.ReactCollapse--collapse{
+  transition: height 500ms;
 }
 
 .card:hover h3, .card:active h3, .card.active h3, .card:hover ul li {
@@ -4506,7 +4514,6 @@ textarea.form-control-lg {
   box-shadow: inset 0 calc(-1 * var(--ar-accordion-border-width)) 0 var(--ar-accordion-border-color);
 }
 .accordion-button:not(.collapsed)::after {
-  background-image: var(--ar-accordion-btn-active-icon);
   transform: var(--ar-accordion-btn-icon-transform);
 }
 .accordion-button::after {
@@ -4515,7 +4522,6 @@ textarea.form-control-lg {
   height: var(--ar-accordion-btn-icon-width);
   margin-left: auto;
   content: "";
-  background-image: var(--ar-accordion-btn-icon);
   background-repeat: no-repeat;
   background-size: var(--ar-accordion-btn-icon-width);
   transition: var(--ar-accordion-btn-icon-transition);
@@ -4569,7 +4575,7 @@ textarea.form-control-lg {
 }
 
 .accordion-body {
-  padding: var(--ar-accordion-body-padding-y) var(--ar-accordion-body-padding-x);
+  /*padding: var(--ar-accordion-body-padding-y) var(--ar-accordion-body-padding-x);*/
 }
 
 .accordion-flush .accordion-collapse {
@@ -4593,39 +4599,6 @@ textarea.form-control-lg {
 [data-bs-theme=dark] .accordion-button::after {
   --ar-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba%28255, 255, 255, 0.9%29'%3e%3cpath d='M.5 6.3c.6-.6 1.6-.6 2.3 0l9.3 9.3 9.3-9.3c.6-.6 1.6-.6 2.3 0 .6.6.6 1.6 0 2.3L13.3 18.8c-.6.6-1.6.6-2.3 0L.8 8.5c-.9-.8-.9-1.6-.3-2.2z'/%3e%3c/svg%3e");
   --ar-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23448c74'%3e%3cpath d='M.5 6.3c.6-.6 1.6-.6 2.3 0l9.3 9.3 9.3-9.3c.6-.6 1.6-.6 2.3 0 .6.6.6 1.6 0 2.3L13.3 18.8c-.6.6-1.6.6-2.3 0L.8 8.5c-.9-.8-.9-1.6-.3-2.2z'/%3e%3c/svg%3e");
-}
-
-.breadcrumb {
-  --ar-breadcrumb-padding-x: 0;
-  --ar-breadcrumb-padding-y: 0;
-  --ar-breadcrumb-margin-bottom: 1rem;
-  --ar-breadcrumb-font-size: calc(var(--ar-body-font-size) * 0.875);
-  --ar-breadcrumb-bg: ;
-  --ar-breadcrumb-border-radius: ;
-  --ar-breadcrumb-divider-color: var(--ar-gray-600);
-  --ar-breadcrumb-item-padding-x: 0.375rem;
-  --ar-breadcrumb-item-active-color: var(--ar-primary);
-  display: flex;
-  flex-wrap: wrap;
-  padding: var(--ar-breadcrumb-padding-y) var(--ar-breadcrumb-padding-x);
-  margin-bottom: var(--ar-breadcrumb-margin-bottom);
-  font-size: var(--ar-breadcrumb-font-size);
-  list-style: none;
-  background-color: var(--ar-breadcrumb-bg);
-  border-radius: var(--ar-breadcrumb-border-radius);
-}
-
-.breadcrumb-item + .breadcrumb-item {
-  padding-left: var(--ar-breadcrumb-item-padding-x);
-}
-.breadcrumb-item + .breadcrumb-item::before {
-  float: left;
-  padding-right: var(--ar-breadcrumb-item-padding-x);
-  color: var(--ar-breadcrumb-divider-color);
-  content: var(--ar-breadcrumb-divider, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3e%3cpath d='M12.7,9.7c0.4-0.4,1.1-0.4,1.5,0l6.7,6.7c0.4,0.4,0.4,1.1,0,1.5l-6.7,6.7c-0.4,0.4-1.1,0.4-1.5,0s-0.4-1.1,0-1.5l6-6l-6-6C12.3,10.6,12.3,10.1,12.7,9.7L12.7,9.7z'/%3e%3c/svg%3e")) /* rtl: var(--ar-breadcrumb-divider, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3e%3cpath d='M12.7,9.7c0.4-0.4,1.1-0.4,1.5,0l6.7,6.7c0.4,0.4,0.4,1.1,0,1.5l-6.7,6.7c-0.4,0.4-1.1,0.4-1.5,0s-0.4-1.1,0-1.5l6-6l-6-6C12.3,10.6,12.3,10.1,12.7,9.7L12.7,9.7z'/%3e%3c/svg%3e")) */;
-}
-.breadcrumb-item.active {
-  color: var(--ar-breadcrumb-item-active-color);
 }
 
 .pagination {
@@ -4722,127 +4695,6 @@ textarea.form-control-lg {
   --ar-pagination-border-radius: var(--ar-border-radius-sm);
 }
 
-.badge {
-  --ar-badge-padding-x: 0.75em;
-  --ar-badge-padding-y: 0.5em;
-  --ar-badge-font-size: 0.75em;
-  --ar-badge-font-weight: 600;
-  --ar-badge-color: #fff;
-  --ar-badge-border-radius: 50rem;
-  display: inline-block;
-  padding: var(--ar-badge-padding-y) var(--ar-badge-padding-x);
-  font-size: var(--ar-badge-font-size);
-  font-weight: var(--ar-badge-font-weight);
-  line-height: 1;
-  color: var(--ar-badge-color);
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: var(--ar-badge-border-radius);
-}
-.badge:empty {
-  display: none;
-}
-
-.btn .badge {
-  position: relative;
-  top: -1px;
-}
-
-.alert {
-  --ar-alert-bg: transparent;
-  --ar-alert-padding-x: 1rem;
-  --ar-alert-padding-y: 1rem;
-  --ar-alert-margin-bottom: 1rem;
-  --ar-alert-color: inherit;
-  --ar-alert-border-color: transparent;
-  --ar-alert-border: var(--ar-border-width) solid var(--ar-alert-border-color);
-  --ar-alert-border-radius: var(--ar-border-radius-lg);
-  --ar-alert-link-color: inherit;
-  position: relative;
-  padding: var(--ar-alert-padding-y) var(--ar-alert-padding-x);
-  margin-bottom: var(--ar-alert-margin-bottom);
-  color: var(--ar-alert-color);
-  background-color: var(--ar-alert-bg);
-  border: var(--ar-alert-border);
-  border-radius: var(--ar-alert-border-radius);
-}
-
-.alert-heading {
-  color: inherit;
-}
-
-.alert-link {
-  font-weight: 600;
-  color: var(--ar-alert-link-color);
-}
-
-.alert-dismissible {
-  padding-right: 3rem;
-}
-.alert-dismissible .btn-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  padding: 1.25rem 1rem;
-}
-
-.alert-primary {
-  --ar-alert-color: var(--ar-primary-text-emphasis);
-  --ar-alert-bg: var(--ar-primary-bg-subtle);
-  --ar-alert-border-color: var(--ar-primary-border-subtle);
-  --ar-alert-link-color: var(--ar-primary-text-emphasis);
-}
-
-.alert-secondary {
-  --ar-alert-color: var(--ar-secondary-text-emphasis);
-  --ar-alert-bg: var(--ar-secondary-bg-subtle);
-  --ar-alert-border-color: var(--ar-secondary-border-subtle);
-  --ar-alert-link-color: var(--ar-secondary-text-emphasis);
-}
-
-.alert-success {
-  --ar-alert-color: var(--ar-success-text-emphasis);
-  --ar-alert-bg: var(--ar-success-bg-subtle);
-  --ar-alert-border-color: var(--ar-success-border-subtle);
-  --ar-alert-link-color: var(--ar-success-text-emphasis);
-}
-
-.alert-info {
-  --ar-alert-color: var(--ar-info-text-emphasis);
-  --ar-alert-bg: var(--ar-info-bg-subtle);
-  --ar-alert-border-color: var(--ar-info-border-subtle);
-  --ar-alert-link-color: var(--ar-info-text-emphasis);
-}
-
-.alert-warning {
-  --ar-alert-color: var(--ar-warning-text-emphasis);
-  --ar-alert-bg: var(--ar-warning-bg-subtle);
-  --ar-alert-border-color: var(--ar-warning-border-subtle);
-  --ar-alert-link-color: var(--ar-warning-text-emphasis);
-}
-
-.alert-danger {
-  --ar-alert-color: var(--ar-danger-text-emphasis);
-  --ar-alert-bg: var(--ar-danger-bg-subtle);
-  --ar-alert-border-color: var(--ar-danger-border-subtle);
-  --ar-alert-link-color: var(--ar-danger-text-emphasis);
-}
-
-.alert-light {
-  --ar-alert-color: var(--ar-light-text-emphasis);
-  --ar-alert-bg: var(--ar-light-bg-subtle);
-  --ar-alert-border-color: var(--ar-light-border-subtle);
-  --ar-alert-link-color: var(--ar-light-text-emphasis);
-}
-
-.alert-dark {
-  --ar-alert-color: var(--ar-dark-text-emphasis);
-  --ar-alert-bg: var(--ar-dark-bg-subtle);
-  --ar-alert-border-color: var(--ar-dark-border-subtle);
-  --ar-alert-link-color: var(--ar-dark-text-emphasis);
-}
 
 @keyframes progress-bar-stripes {
   0% {
@@ -17376,7 +17228,6 @@ img-comparison-slider:focus {
 }
 
 .binded-content {
-  position: relative;
   height: 100%;
 }
 
@@ -17460,14 +17311,6 @@ img-comparison-slider:focus {
 
 .zoom-effect:hover .zoom-effect-img {
   transform: scale(1.05);
-}
-
-.polygon-avatar {
-  display: block;
-  width: 6.25rem;
-  height: 6.25rem;
-  -webkit-clip-path: path("M44.2392 4.03005C47.6985 1.61004 52.3015 1.61004 55.7608 4.03005C57.9922 5.59105 60.7615 6.1797 63.4349 5.66124C67.5795 4.85747 71.7845 6.72967 73.9604 10.3475C75.364 12.6811 77.6545 14.3453 80.3076 14.959C84.4207 15.9105 87.5007 19.3311 88.0171 23.5212C88.3501 26.224 89.7657 28.6759 91.9398 30.3157C95.3104 32.8578 96.7328 37.2355 95.5002 41.2733C94.7051 43.8779 95.0011 46.6936 96.3203 49.0759C98.3654 52.7692 97.8843 57.347 95.116 60.5344C93.3303 62.5904 92.4554 65.283 92.6915 67.996C93.0577 72.2018 90.7562 76.1881 86.9307 77.974C84.4632 79.1259 82.5687 81.2299 81.681 83.8044C80.3048 87.7955 76.581 90.5011 72.3599 90.5766C69.6371 90.6253 67.0507 91.7768 65.1926 93.7677C62.312 96.854 57.8096 97.811 53.9228 96.1631C51.4156 95.1002 48.5844 95.1002 46.0772 96.1631C42.1904 97.811 37.688 96.854 34.8074 93.7677C32.9493 91.7768 30.3629 90.6253 27.6401 90.5766C23.419 90.5011 19.6952 87.7955 18.319 83.8044C17.4313 81.2299 15.5368 79.1259 13.0693 77.974C9.24381 76.1881 6.94232 72.2018 7.30846 67.996C7.54464 65.283 6.66974 62.5904 4.88405 60.5344C2.1157 57.347 1.63456 52.7692 3.67971 49.0759C4.99892 46.6936 5.29487 43.8779 4.4998 41.2733C3.26722 37.2355 4.68961 32.8578 8.06016 30.3157C10.2343 28.6759 11.6499 26.224 11.9829 23.5212C12.4993 19.3311 15.5793 15.9105 19.6924 14.959C22.3455 14.3453 24.636 12.6811 26.0396 10.3475C28.2155 6.72967 32.4205 4.85747 36.5651 5.66124C39.2385 6.1797 42.0078 5.59105 44.2392 4.03005Z");
-          clip-path: path("M44.2392 4.03005C47.6985 1.61004 52.3015 1.61004 55.7608 4.03005C57.9922 5.59105 60.7615 6.1797 63.4349 5.66124C67.5795 4.85747 71.7845 6.72967 73.9604 10.3475C75.364 12.6811 77.6545 14.3453 80.3076 14.959C84.4207 15.9105 87.5007 19.3311 88.0171 23.5212C88.3501 26.224 89.7657 28.6759 91.9398 30.3157C95.3104 32.8578 96.7328 37.2355 95.5002 41.2733C94.7051 43.8779 95.0011 46.6936 96.3203 49.0759C98.3654 52.7692 97.8843 57.347 95.116 60.5344C93.3303 62.5904 92.4554 65.283 92.6915 67.996C93.0577 72.2018 90.7562 76.1881 86.9307 77.974C84.4632 79.1259 82.5687 81.2299 81.681 83.8044C80.3048 87.7955 76.581 90.5011 72.3599 90.5766C69.6371 90.6253 67.0507 91.7768 65.1926 93.7677C62.312 96.854 57.8096 97.811 53.9228 96.1631C51.4156 95.1002 48.5844 95.1002 46.0772 96.1631C42.1904 97.811 37.688 96.854 34.8074 93.7677C32.9493 91.7768 30.3629 90.6253 27.6401 90.5766C23.419 90.5011 19.6952 87.7955 18.319 83.8044C17.4313 81.2299 15.5368 79.1259 13.0693 77.974C9.24381 76.1881 6.94232 72.2018 7.30846 67.996C7.54464 65.283 6.66974 62.5904 4.88405 60.5344C2.1157 57.347 1.63456 52.7692 3.67971 49.0759C4.99892 46.6936 5.29487 43.8779 4.4998 41.2733C3.26722 37.2355 4.68961 32.8578 8.06016 30.3157C10.2343 28.6759 11.6499 26.224 11.9829 23.5212C12.4993 19.3311 15.5793 15.9105 19.6924 14.959C22.3455 14.3453 24.636 12.6811 26.0396 10.3475C28.2155 6.72967 32.4205 4.85747 36.5651 5.66124C39.2385 6.1797 42.0078 5.59105 44.2392 4.03005Z");
 }
 
 @keyframes rotate-cw {

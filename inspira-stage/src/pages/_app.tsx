@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import {AiOutlineMinus} from "react-icons/ai";
+
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

@@ -4,18 +4,29 @@ import 'swiper/css';
 import { SkillData } from '@/constants';
 import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
-import Accordion from '@/components/Accordion'
+import Accordion from '@/components/Accordion';
+import { FaFacebook } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 import { TypeAnimation } from 'react-type-animation';
-
-const accordionData=[
-  { title: "test 1", img: "test 1" },
-  { title: "test 2", img: "test 2" },
-  { title: "test 3", img: "test 3" },
-]
-
+import { useState } from 'react';
 
 export default function AboutMe() {
+  const accordionData = [
+    { title: 'What does Inspira do?',desc: 'With a custom web application, you can automate business processes for efficient operation.\nWith a custom web application, you can automate your business processes and provide efficient, clear integration. Our years of experience allow us to analyze which business processes can be integrated and optimized. We always do our utmost to provide a fresh perspective on the big picture. Our goal is always to work smart and user-friendly. The result? Huge time savings for you and your employees.\n\nWork more efficiently and faster\nEvery company has its own way of working. This way of working has improved over the years. Without this operation, mistakes are sure to happen. It is this specific way of working that we will integrate into a custom web application to make it simpler and more efficient. No more unnecessary paperwork. No more combining different programs. Thanks to the choice for custom work, these business processes can be further optimized in the future.\n\nA custom web application is available everywhere and always\nSuch a custom web application is available online. So you can use it anywhere in the world, provided there is an internet connection. This is much easier than local software. Moreover, there is no additional cost or delay noticeable when multiple users use the application.\n\nCustom web application: The workplace of the future\nOur service does not stop after delivery. Once you start working with your very own custom web application, your eyes will really open. Do you have new ideas? Or are you thinking of speeding up a process? You simply contact us, and we get to work.'
+    , img: "/Inspira-41.jpg" },
+    { title: 'Internship execution', desc: 'My role as a web developer intern involves working enthusiastically with PHP to create robust web applications. We use the powerful Bootstrap framework for attractive and responsive user interfaces. My daily tasks also include managing data with MySQL as the database.', img: '/Inspira-58.jpg' },
+    { title: 'What will I do', desc: 'I will be involved in various full-stack projects, taking charge of tasks spanning both front-end and back-end development. This could entail collaborative efforts within a team or tackling individual initiatives.', img: '/Inspira-60.jpg' },
+  ];
+
+  const [openItems, setOpenItems] = useState([true, ...Array(accordionData.length - 1).fill(false)]);
+
+  const toggle = (index:any) => {
+    const newOpenItems = Array(accordionData.length).fill(false);
+    newOpenItems[index] = !openItems[index];
+    setOpenItems(newOpenItems);
+  };
+  
   return (
     <>
       <section className='container mx-auto px-6 lg:px-12'>
@@ -39,6 +50,10 @@ export default function AboutMe() {
             <p className='text-[#ADB7BE] text-lg mb-6 lg:text-xl'>
               Welcome to my humble portfolio! As a junior web developer, I'm excited to share my initial steps in the world of creative digital solutions. Take a look around and explore my growing collection of designs. Enjoy the journey and feel free to browse! 🚀
             </p>
+            <div className='flex'>
+            <a href=""><FaFacebook /></a>
+            <a href=""><FaLinkedin /></a>
+            </div>
           </div>
           <div className="col-span-12 lg:col-span-5 place-self-center mt-4 lg:mt-0">
             <div className='rounded-full overflow-hidden bg-[#3a7763] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] mx-auto relative'>
@@ -55,8 +70,8 @@ export default function AboutMe() {
       </section>
 
 
-      <section className="container py-5 text-lg lg:text-xl">
-        <h2 className="h1 text-center">Projecten</h2>
+      <section className="container text-lg lg:text-xl">
+        <h2 className="h1 text-center mt-5">Endeavor</h2>
         {/* Stats */}
         <section className="container pb-sm-3 pb-md-4 pb-lg-5 mb-xl-3 mb-xxl-5">
           <div className="bg-light rounded-5 py-4 py-md-5 px-lg-5">
@@ -65,21 +80,21 @@ export default function AboutMe() {
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 border-r h-3/5"></div>
                 <div className="p-3 px-sm-0 py-sm-4">
                   <div className="h2 text-primary text-5xl mb-0">1</div>
-                  <span>Front-end ontwikkelaar</span>
+                  <span>Front-end</span>
                 </div>
               </div>
               <div className="col relative flex justify-center items-center text-center md:text-start">
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 border-r h-3/5"></div>
                 <div className="p-3 px-sm-0 py-sm-4">
                   <div className="h2 text-primary text-5xl mb-0">2</div>
-                  <span>Back-end ontwikkelaar</span>
+                  <span>Back-end</span>
                 </div>
               </div>
               <div className="col relative flex justify-center items-center text-center md:text-start">
                 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 border-r h-3/5"></div>
                 <div className="p-3 px-sm-0 py-sm-4">
                   <div className="h2 text-primary text-5xl mb-0">2</div>
-                  <span>Full-stack ontwikkelaar</span>
+                  <span>Full-stack</span>
                 </div>
               </div>
               <div className="col relative flex justify-center items-center text-center md:text-start">
@@ -156,10 +171,10 @@ export default function AboutMe() {
 
               <h3 className="h4 card-title mt-4">Education</h3>
               <ul>
-                <li>2021-present: Bachelor's in Programming, AP University College, Antwerp</li>
-                <li>2012-2016: Electricity/Electronics, Municipal Lyceum Meir, Antwerp</li>
-                <li>2011-2012: Commerce, Saint Lieven College, Antwerp</li>
-                <li>2010-2011: Modern Sciences, Saint Lieven College, Antwerp</li>
+                <li>2021-present: Graduaat in Programming at AP Hogeschool Antwerpen</li>
+                <li>2012-2016: Electricity/Electronics, Stedelijk Lyceum Meir, Antwerp</li>
+                <li>2011-2012: Commerce, Sint Lievens College, Antwerp</li>
+                <li>2010-2011: Modern Sciences, Sint Lievens College, Antwerp</li>
               </ul>
             </div>
           </div>
@@ -188,6 +203,8 @@ export default function AboutMe() {
                 <li>Still (temporary): Warehouse Operator 09/2020-12/2020</li>
                 <li>Henco: Operator 02/2021-06/2021</li>
                 <li>Camin Cargo Warehouse/Samples/SABA 01/2023-03/2023</li>
+                <li>icapps IT Project Intern Communication Model Intern 09/2023-01/2024</li>
+                <li>Inspira full stack Web Applications 02/2024-05/2024</li>
               </ul>
 
               <h3 className="h4 card-title mt-4">Language Skills</h3>
@@ -205,10 +222,10 @@ export default function AboutMe() {
       {/*--------------------------------------------------------------------------------------- */}
 
 
-      <div className=' bg-gradient-to-b from-transparent to-bg-start flex flex-col items-center justify-center'>
+      <div className=' bg-gradient-to-b from-transparent to-bg-start flex flex-col items-center justify-center py-5'>
         <div className='flex flex-col max-w-[80%] text-center items-center'>
           <div className='flex flex-col items-center'>
-            <h1 className='font-semibold text-primary text-5xl'>
+            <h1 className='font-semibold text-primary text-5xl mb-5'>
               Skills{' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500'>
                 {' '}
@@ -265,19 +282,21 @@ export default function AboutMe() {
             </Swiper>
           </div>
         </div>
+        <div>
+        <h2 className='h1 text-center lg:ml-4 xl:ml-8 py-5 mt-5'>Web Development Internship at Inspira </h2>
+        {accordionData.map((data, index) => (
+          <Accordion
+            key={data.title}
+            open={openItems[index]}
+            title={data.title}
+            imgSrc={data.img}
+            desc={data.desc}
+            toggle={() => toggle(index)}
+          />
+        ))}
       </div>
-      <section className='bg-[#3d3db9] h-screen grid place-items-center'>
-        <div className="px-[40px] max-w[800px]">
-          {accordionData.map((data,index)=>{
-            return (
-              <>
-             <Accordion /> 
-              </>
-            )
-          })}
-        </div>
-
-      </section>
+      </div>
+      
     </>
   );
 }
