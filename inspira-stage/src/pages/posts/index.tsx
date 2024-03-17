@@ -99,6 +99,7 @@ interface postProps {
                 <div className="items-center">
                   <span className="text-gray-400  font-small">
                     Published on:{value.publishedAt?.substring(0, 10)}
+                    <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span>
                   </span>
                   <p className="text-primary text-sm font-semibold ml-2">#{value.btag || "Uncategorized"}</p>
                   <h2 className="text-black text-xl font-semibold">{value.title}</h2>

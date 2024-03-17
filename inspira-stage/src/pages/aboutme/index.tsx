@@ -71,7 +71,7 @@ export default function AboutMe() {
 
 
       <section className="container text-lg lg:text-xl">
-        <h2 className="h1 text-center mt-5">Endeavor</h2>
+        <h2 className="h1 text-center mt-5">Projects</h2>
         {/* Stats */}
         <section className="container pb-sm-3 pb-md-4 pb-lg-5 mb-xl-3 mb-xxl-5">
           <div className="bg-light rounded-5 py-4 py-md-5 px-lg-5">

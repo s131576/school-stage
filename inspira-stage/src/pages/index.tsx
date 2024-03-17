@@ -109,10 +109,11 @@ const Home = ({ posts }: postProps) => {
               <div className="p-6 flex flex-col flex-grow">
                 <div>
                   <span className="text-gray-400  font-small">
-                    Published on:{value.publishedAt?.substring(0, 10)}
+                    Published on:{value.publishedAt?.substring(0, 10)} <br />
+                    <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span>
                   </span>
                   <p className="text-primary text-sm font-semibold ml-2">#{value.btag}</p>
-                  <h2 className="text-black text-xl font-bold mb-2">{value.title}</h2>
+                  <h2 className="text-black text-xl font-bold mb-2">{value.title.toUpperCase()}</h2>
                 </div>
                 <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>

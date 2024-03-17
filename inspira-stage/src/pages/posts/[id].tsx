@@ -126,7 +126,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
         <div className="md:w-1/5 mt-4 md:mt-0 md:ml-4">
         <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
             {post.week && (
-              <p className="text-green-900 text-1xl font-bold mb-4">=={post.week}==</p>
+              <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {post.week}</span>
             )}
           </div>
           <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
