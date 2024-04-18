@@ -59,7 +59,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <nav className="hidden md:flex items-center space-x-4">
             <Link href="/" className="text-gray-800 hover:text-green-500 cursor-pointer">Home</Link>
             <Link href="/posts" className="text-gray-800 hover:text-green-500 cursor-pointer">Blog</Link>
-            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">About me</Link>
+            <Link href="/aboutme" className="text-gray-800 hover:text-green-500 cursor-pointer">Over mij</Link>
           </nav>
         </div>
       </header>
@@ -74,7 +74,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             Blog
           </Link>
           <Link href="/aboutme" className="block text-white text-m" onClick={toggleMenu}>
-            About me
+            Over mij
           </Link>
         </div>
       )}
@@ -87,22 +87,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       {/* Footer */}
       <footer className="bg-secondary py-5 w-full bg-white shadow-lg">
-        {/* <div className="container mx-auto text-center md:text-left fs-sm text-body-secondary">
-         
-
-          <div className="mb-2 md:mb-0 md:mr-2 inline-block">
-            <p>Section 1 Content</p>
-          </div>
-
-         
-          <div className="mb-2 md:mb-0 md:mx-2 inline-block">
-            <p>Section 2 Content</p>
-          </div>
-
-          <div className="inline-block">
-            <p>Section 3 Content</p>
-          </div>
-        </div> */}
         <button
           onClick={scrollToTop}
           className={`fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full transition-opacity duration-300 ${hasScrolled ? 'opacity-100' : 'opacity-0'
@@ -120,7 +104,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           </svg>
         </button>
         <div className="container mx-auto pt-md-3 pt-lg-4 text-center fs-sm text-body-secondary">
-          &copy; All rights reserved. Made by <span>Rachad Bouhjar</span>
+          &copy;Alle rechten voorbehouden. Gemaakt door <span>Rachad Bouhjar</span>
         </div>
       </footer>
     </div>

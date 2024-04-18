@@ -93,7 +93,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
             {/* Obstacles */}
             {post.obstacles && (
               <div className="p-6">
-                <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstacles</h1>
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Obstakels</h1>
                 <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.obstacles) }} />
               </div>
             )}
@@ -101,7 +101,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
             {/* Reflection */}
             {post.reflection && (
               <div className="p-6">
-                <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflection</h1>
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Reflectie</h1>
                 <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.reflection) }} />
               </div>
             )}
@@ -115,7 +115,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
             {/* Conclusion */}
             {post.conclusion && (
               <div className="p-6 text-xl">
-                <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusion</h1>
+                <h1 className="text-gray-800 text-4xl font-bold mb-4">Conclusie</h1>
                 <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: marked.parse(post.conclusion) }} />
               </div>
             )}
@@ -139,7 +139,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
       <div className="mt-6 text-center">
         <Link href={`/posts`}>
-          <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Go back</button>
+          <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Ga Terug</button>
         </Link>
       </div>
     </div>

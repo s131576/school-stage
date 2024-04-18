@@ -27,7 +27,7 @@ const Accordion = ({ open, toggle, title, desc, imgSrc }) => {
                   </div>
                 </button>
               </h3>
-              <Collapse isOpened={open}>
+              <Collapse isOpened={open} checkTimeout={1000}>
                 <div className='accordion-body'>{desc}</div>
               </Collapse>
             </div>

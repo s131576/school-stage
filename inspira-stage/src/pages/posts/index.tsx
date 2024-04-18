@@ -57,7 +57,7 @@ interface postProps {
       {/* Filter Section */}
       <div className="w-full md:w-1/4 md:pr-4  md:order-2">
         <ul>
-          <h2 className="text-lg font-semibold mb-2 mt-1">Categories</h2>
+          <h2 className="text-lg font-semibold mb-2 mt-1">Categorieën</h2>
           <li key="all" onClick={() => setSelectedBtag(null)} className={`cursor-pointer mt-2`}>
             <button
               type="button"
@@ -97,10 +97,11 @@ interface postProps {
               </div>
               <div className="p-4 flex flex-col justify-between h-full">
                 <div className="items-center">
-                  <span className="text-gray-400  font-small">
-                    Published on:{value.publishedAt?.substring(0, 10)}
-                    <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span>
-                  </span>
+                  <p className="text-gray-400  font-small text-center">
+                    {/* Published on:{value.publishedAt?.substring(0, 10)} */}
+                    Week {value.week}
+                    {/* <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span> */}
+                  </p>
                   <p className="text-primary text-sm font-semibold ml-2">#{value.btag || "Uncategorized"}</p>
                   <h2 className="text-black text-xl font-semibold">{value.title}</h2>
 
@@ -109,7 +110,7 @@ interface postProps {
                 <div className="flex-grow"></div>
                 <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>
-                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Read more ...</button>
+                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Lees meer ...</button>
                   </Link>
                 </div>
               </div>

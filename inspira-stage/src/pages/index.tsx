@@ -71,10 +71,10 @@ const Home = ({ posts }: postProps) => {
                 </svg>
               </div>
             </div>
-            <h3 className="h5 ms-3 mb-0">Introduction</h3>
+            <h3 className="h5 ms-3 mb-0">Introductie</h3>
           </div>
           <p className="fs-sm">
-            Welcome to the official website of Schoolproject-Inspira. I am Bouhjar Rachad, a junior intern in the exciting field of web development at Inspira. My role as a web developer intern involves working enthusiastically with PHP to create robust web applications. We use the powerful Bootstrap framework for attractive and responsive user interfaces. My daily tasks also include managing data with MySQL as the database.
+            Welkom op de officiële website van Schoolproject-Inspira. Ik ben Bouhjar Rachad, een junior stagiair in het boeiende vakgebied van webontwikkeling bij Inspira. Mijn rol als stagiair webontwikkelaar houdt in dat ik enthousiast werk met PHP om robuuste webapplicaties te creëren. We gebruiken het krachtige Bootstrap-framework voor aantrekkelijke en responsieve gebruikersinterfaces. Mijn dagelijkse taken omvatten ook het beheren van gegevens met MySQL als de database.
           </p>
         </div>
 
@@ -89,10 +89,10 @@ const Home = ({ posts }: postProps) => {
                 </svg>
               </div>
             </div>
-            <h3 className="h5 ms-3 mb-0">Purpose of this website</h3>
+            <h3 className="h5 ms-3 mb-0">Doel van deze website</h3>
           </div>
           <p className="fs-sm">
-            This website serves not only as a digital portfolio but also as a dynamic report of my learning experiences and achievements during my internship. I cordially invite you to follow my development journey and discover how my passion for web development is reflected in each project and blog post. Here, I share my growth, challenges, and successes, with the aim of providing a transparent insight into my professional development and the creative journey I have undertaken.
+            Deze website dient niet alleen als een digitaal portfolio, maar ook als een dynamisch verslag van mijn leerervaringen en prestaties tijdens mijn stage. Ik nodig u van harte uit om mijn ontwikkelingsreis te volgen en te ontdekken hoe mijn passie voor webontwikkeling wordt weerspiegeld in elk project en blogpost. Hier deel ik mijn groei, uitdagingen en successen, met als doel een transparant inzicht te bieden in mijn professionele ontwikkeling en de creatieve reis die ik heb afgelegd.
           </p>
         </div>
       </section>
@@ -108,16 +108,17 @@ const Home = ({ posts }: postProps) => {
               />
               <div className="p-6 flex flex-col flex-grow">
                 <div>
-                  <span className="text-gray-400  font-small">
-                    Published on:{value.publishedAt?.substring(0, 10)} <br />
-                    <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span>
-                  </span>
+                  <p className="text-gray-400  font-small text-center">
+                    {/* Published on:{value.publishedAt?.substring(0, 10)} <br /> */}
+                    Week {value.week}
+                    {/* <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {value.week}</span> */}
+                  </p>
                   <p className="text-primary text-sm font-semibold ml-2">#{value.btag}</p>
                   <h2 className="text-black text-xl font-bold mb-2">{value.title.toUpperCase()}</h2>
                 </div>
                 <div className="mt-auto text-center">
                   <Link href={`/posts/${value.id}`}>
-                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Read more ...</button>
+                    <button type="button" className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Lees meer ...</button>
                   </Link>
                 </div>
               </div>
@@ -131,7 +132,7 @@ const Home = ({ posts }: postProps) => {
           <Link href="/posts" className="text-white">
             <div>
               <button type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                See all posts
+                Alle blogposts bekijken
               </button>
             </div>
           </Link>
