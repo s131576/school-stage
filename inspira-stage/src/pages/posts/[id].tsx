@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GetServerSidePropsContext } from "next";
 import { Post } from "@/types";
 import { loadPosts } from "..";
+import Fancybox from '@/components/FanxyBoxCompo';
 import { Marked } from 'marked';
 const marked = new Marked();
 export const getStaticPaths = async () => {
@@ -9,7 +10,7 @@ export const getStaticPaths = async () => {
   const token =
     "153ddbd84e9a231945755efabb73de261275e1326c3b914e8e113e027ed77777496c9b0ca51b6fed391164f8a6bea95acc2083ac9c60e00bd4d25c4763ab0e5c548d317ee53896b14c2b84d1527b73008186d6e89c40ff4051e1e9474fa19c51d4bdcbcacb92d15001ca08d3172940e3e7198a67f2f8c852bd8a5c42a2ba6436";
 
-  const response = await fetch("http://localhost:1337/api/blogs?populate=*", {
+  const response = await fetch("http://localhost:1337/api/blogs?populate=&pagination[pageSize]=1000", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -79,11 +80,21 @@ const PostDetail = ({ post }: PostDetailProps) => {
                 <div dangerouslySetInnerHTML={{ __html: marked.parse(post.introduction) }} />
               </div>
             )}
-
-            {/* Image */}
             {post.image && (
-              <img src={post.image} alt={post.title} className="w-full h-100 object-cover" />
+              <Fancybox
+                options={{
+                  Carousel: {
+                    infinite: false,
+                  },
+                }}
+              >
+                <a data-fancybox="gallery" href={post.image} className="w-2/5 p-1">
+                  <img src={post.image} alt={post.title} className="w-full h-100 object-cover" />
+                </a>
+              </Fancybox>
             )}
+
+
 
             {/* Content */}
             <div className="p-6">
@@ -106,10 +117,26 @@ const PostDetail = ({ post }: PostDetailProps) => {
               </div>
             )}
 
-            <div className="p-6">
-              {post.imageUrls?.map((imageUrl: string, index: number) => (
-                <img key={index} src={imageUrl} alt={`Image ${index + 1}`} className="w-full h-100 object-cover mb-4" />
-              ))}
+            <div className="p-6 flex justify-center">
+              <Fancybox
+                options={{
+                  Carousel: {
+                    infinite: false,
+                  },
+                }}
+              >
+                <div className="flex flex-wrap justify-center">
+                  {post.imageUrls?.map((imageUrl: string, index: number) => (
+                    <a key={index} data-fancybox="gallery" href={imageUrl} className="w-full sm:w-2/5 p-1">
+                      <img
+                        src={imageUrl}
+                        alt={`Image ${index + 1}`}
+                        className="w-full object-cover mb-4 rounded-lg cursor-pointer hover:opacity-75 transition-opacity duration-300"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </Fancybox>
             </div>
 
             {/* Conclusion */}
@@ -124,7 +151,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
 
         {/* Sidebar */}
         <div className="md:w-1/5 mt-4 md:mt-0 md:ml-4">
-        <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
+          <div className="bg-white text-center rounded-lg overflow-hidden shadow-lg p-1 mb-4">
             {post.week && (
               <span className="text-primary text-sm font-semibold ml-2 text-center">#Week {post.week}</span>
             )}

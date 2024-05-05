@@ -5,7 +5,7 @@ export const loadPosts = async () => {
   const token =
     "153ddbd84e9a231945755efabb73de261275e1326c3b914e8e113e027ed77777496c9b0ca51b6fed391164f8a6bea95acc2083ac9c60e00bd4d25c4763ab0e5c548d317ee53896b14c2b84d1527b73008186d6e89c40ff4051e1e9474fa19c51d4bdcbcacb92d15001ca08d3172940e3e7198a67f2f8c852bd8a5c42a2ba6436";
 
-  const response = await fetch("http://localhost:1337/api/blogs?populate=*", {
+  const response = await fetch("http://localhost:1337/api/blogs?populate=*&pagination[pageSize]=1000", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

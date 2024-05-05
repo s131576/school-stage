@@ -19,7 +19,7 @@ export default function AboutMe() {
       , img: "/Inspira-41.jpg"
     },
     { title: 'Technologieën?'
-    , desc: 'Mijn rol als stagiair webontwikkelaar houdt in dat ik enthousiast werk met PHP om robuuste webapplicaties te creëren. We gebruiken het krachtige Bootstrap-framework voor aantrekkelijke en responsieve gebruikersinterfaces. Mijn dagelijkse taken omvatten ook het beheren van gegevens met MySQL als database.'
+    , desc: 'Mijn rol als stagiair webontwikkelaar houdt in dat ik enthousiast werk met PHP en Javascript om robuuste webapplicaties te creëren. We gebruiken het krachtige Bootstrap-framework voor aantrekkelijke en responsieve gebruikersinterfaces. Mijn dagelijkse taken omvatten ook het beheren van gegevens met MySQL als database.'
     , img: '/Inspira-58.jpg' },
     { title: 'Wat zal ik doen?'
     , desc: 'Ik zal betrokken zijn bij verschillende full-stack projecten, waarbij ik verantwoordelijk zal zijn voor taken die zowel front-end als back-end ontwikkeling omvatten. Dit kan samenwerkingsinspanningen binnen een team inhouden of individuele initiatieven aanpakken.'
