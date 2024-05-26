@@ -127,7 +127,7 @@ const PostDetail = ({ post }: PostDetailProps) => {
               >
                 <div className="flex flex-wrap justify-center">
                   {post.imageUrls?.map((imageUrl: string, index: number) => (
-                    <a key={index} data-fancybox="gallery" href={imageUrl} className="w-full sm:w-2/5 p-1">
+                    <a key={index} data-fancybox="gallery" href={imageUrl} className="w-full sm:w-3/5 p-1">
                       <img
                         src={imageUrl}
                         alt={`Image ${index + 1}`}
